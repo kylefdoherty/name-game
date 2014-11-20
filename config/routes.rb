@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :teammates
-  resources :games, only: [:new, :create, :edit, :edit]
+  resources :games, only: [:new, :create, :edit, :update]
   root 'games#new'
 
   # The priority is based upon order of creation: first created -> highest priority.

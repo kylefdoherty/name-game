@@ -75,7 +75,7 @@ class TeammatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def teammate_params
-      params.require(:teammate).permit(:name, :team, :title)
+      params.require(:teammate).permit(:name, :team, :title, :office)
     end
 
     def upload
