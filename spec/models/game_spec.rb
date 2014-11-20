@@ -1,25 +1,41 @@
 require 'rails_helper'
 
-describe Game do 
+describe Game do
   #build 3 teammates with 3 different offices
-  let(teammates) {
+  #make these factories later
+  let!(:teammates) {
     [
-      Teammate.create(office: "NYC", name: "Bruce Wayne"), 
-      Teammate.create(office: "HC"), 
-      Teammate.create(office: "LDN")
+      create(:teammate, name: "Bruce Wayne", title: "Batman", office: "NYC", team: "Merica", image: "images/batman.jpg"),
+      create(:teammate, office: "HK")
     ]
   }
 
-  let(game) {Game.create.tap {|n| n.office = "NYC" }}
-  #create new game
-  #set which office to use 
-  #after update the question_groups with questions are built
-  describe "#build_game" do 
-    it "builds the question_groups and questions for the game from the teammates data" do
-      question_group_name = game.question_groups.first.questions.first.text
-      
+  let(:game) { create(:game, office: "NYC") }
+
+  describe "#game_setup" do
+    it "builds the question_groups" do
+      game.game_setup
+
       expect(game.question_groups.length).to eq(1)
-      expect(question_group_name).to eq("Bruce Wayne")
     end
-  end 
-end 
+
+    it "builds the questions for each question_group" do
+      game.game_setup
+
+      questions = game.question_groups.first.questions
+      expect(questions.length).to eq(3)
+    end
+
+    it "builds the correct questions for each question group" do
+      game.game_setup
+
+      name_quesiton = game.question_groups.first.questions.first.text
+      title_question = game.question_groups.first.questions.second.text
+      team_question = game.question_groups.first.questions.third.text
+
+      expect(name_quesiton).to eq("Bruce Wayne")
+      expect(title_question).to eq("Batman")
+      expect(team_question).to eq("Merica")
+    end
+  end
+end

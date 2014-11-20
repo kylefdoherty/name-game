@@ -1,6 +1,0 @@
-<h1>Game <%= @game.id %></h1>
-
-<%= form_for @game do |f|%>
-  <%= f.select :office, ["NYC", "LDN", "HK", "DUBAI", "All"] %>
-  <%= f.submit "Start Game" %>
-<% end %>

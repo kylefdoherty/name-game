@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141120021908) do
   create_table "question_groups", force: true do |t|
     t.string   "image"
     t.boolean  "complete",   default: false, null: false
+    t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
