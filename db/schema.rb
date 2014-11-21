@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20141120021908) do
 
   create_table "questions", force: true do |t|
     t.string   "text"
-    t.string   "type"
+    t.string   "label"
     t.integer  "question_group_id"
     t.boolean  "correct",           default: false, null: false
     t.datetime "created_at"

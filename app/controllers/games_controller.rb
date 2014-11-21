@@ -8,7 +8,7 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
     @game.save
 
-    redirect_to game_question_group_path(@game.question_groups.first)
+    redirect_to game_question_group_path(@game, @game.question_groups.first)
   end
 
   private
