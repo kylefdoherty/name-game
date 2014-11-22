@@ -19,6 +19,8 @@ class QuestionGroupsController < ApplicationController
     game = Game.find(@question_group.game_id)
 
     if @question_group.id == game.question_groups.last.id
+      game.complete = true
+      game.save
       redirect_to root_path
     else
       redirect_to game_question_group_path(game, QuestionGroup.find(@question_group.id + 1))

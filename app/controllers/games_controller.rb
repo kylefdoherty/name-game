@@ -4,6 +4,11 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def index 
+    @completed_games = Game.where(complete: true)
+    
+  end 
+
   def create
     @game = Game.new(game_params)
     @game.save
