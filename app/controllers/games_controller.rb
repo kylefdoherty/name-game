@@ -6,7 +6,6 @@ class GamesController < ApplicationController
 
   def index 
     @completed_games = Game.where(complete: true)
-    
   end 
 
   def create

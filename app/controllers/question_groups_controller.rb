@@ -10,9 +10,7 @@ class QuestionGroupsController < ApplicationController
     question_ids = params[:question_group][:questions]
 
     question_ids.each do |id|
-      if id.present?
         Question.find(id).update(correct: true)
-      end
     end
 
 

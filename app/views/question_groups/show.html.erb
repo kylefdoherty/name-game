@@ -2,21 +2,15 @@
 
 <img src= "/assets/images/<%= @question_group.image %>">
 
-<p>
-  <%= @question1.text %>
-</p>
-
-<p>
-  <%= @question2.text %>
-</p>
-
-<p>
-  <%= @question3.text %>
-</p>
-
-
 <%= form_for [@game, @question_group] do |f| %>
-  <%= f.collection_check_boxes(:questions, @question_group.questions, :id, :label ) %>
+  <% @question_group.questions.each do |question| %>
+    <p><%= question.text %></p>
+    <p><%= check_box_tag :questions,
+                          question.id, 
+                          question.correct, 
+                          name: 'question_group[questions][]'
+                          %></p>
+  <% end %>
   <%= f.submit "Submit" %>
 <% end %>
 
