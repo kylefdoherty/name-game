@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119035030) do
+ActiveRecord::Schema.define(version: 20141120021908) do
 
   create_table "games", force: true do |t|
     t.string   "office"
+    t.boolean  "complete",   default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "question_groups", force: true do |t|
+    t.string   "image"
+    t.integer  "game_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.string   "text"
+    t.string   "label"
+    t.integer  "question_group_id"
+    t.boolean  "correct",           default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -24,6 +41,7 @@ ActiveRecord::Schema.define(version: 20141119035030) do
     t.string   "name"
     t.string   "team"
     t.string   "title"
+    t.string   "office"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

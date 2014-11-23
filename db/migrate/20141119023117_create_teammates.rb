@@ -5,6 +5,7 @@ class CreateTeammates < ActiveRecord::Migration
       t.string :name
       t.string :team
       t.string :title
+      t.string :office
 
       t.timestamps
     end

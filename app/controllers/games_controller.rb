@@ -1,19 +1,24 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:edit]
+
+  def new
+    @game = Game.new
+  end
+
+  def index 
+    @completed_games = Game.where(complete: true)
+  end 
 
   def create
-    @game = Game.new
+    @game = Game.new(game_params)
     @game.save
 
-    render :edit
-  end  
-
-  def edit 
-  end 
+    redirect_to game_question_group_path(@game, @game.question_groups.first)
+  end
 
   private
 
-    def set_game
-      @game = Game.find(params[:id])
+    def game_params
+      params.require(:game).permit(:office)
     end
-end 
+
+end

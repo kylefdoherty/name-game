@@ -1,0 +1,27 @@
+<h1>Name Game</h1>
+
+<%= link_to "Play New Game", new_game_path %>
+
+<h2>Game Stats</h2>
+
+<table>
+<% @completed_games.each do |game| %>
+  <tr>
+    <th>Game <%= game.id %> - <%= game.office %></th>
+  </tr>
+  <tr>
+    <td><%= number_to_percentage(game.question_stats("name"), precision: 0 ) %> Names</td>
+  </tr>
+  <tr>
+    <td><%= number_to_percentage(game.question_stats("title"), precision: 0 ) %> Titles</td>
+  </tr>
+  <tr>
+    <td><%= number_to_percentage(game.question_stats("team"), precision: 0 ) %> Teams</td>
+  </tr>
+  <tr>
+    <td><%= number_to_percentage(game.game_total_stats, precision: 0 ) %> Total</td>
+  </tr>
+<% end %>
+</table>
+
+

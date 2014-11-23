@@ -6,7 +6,9 @@ gem 'rails', '4.1.7'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass-rails', '~> 4.0.3'
+gem 'autoprefixer-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -29,11 +31,16 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'pry'
+  gem 'guard-rspec'
+  gem 'rb-readline'
 end
 
-group :test do 
+group :test do
   gem 'capybara', '~> 2.4.4'
-end 
+  gem 'database_cleaner'
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'faker'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

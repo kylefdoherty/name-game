@@ -1,3 +1,6 @@
-<h1>Name Game</h1>
+<h1>Choose Which Office to Be Quizzed On</h1>
 
-<%= link_to "Play New Game", "/games", method: :post %>
+<%= form_for @game do |f| %>
+  <%= f.select :office, ["NYC", "LDN", "HK", "Dubai"] %>
+  <%= f.submit "Start Game" %>
+<% end %>

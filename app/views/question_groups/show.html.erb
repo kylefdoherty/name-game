@@ -1,0 +1,17 @@
+<h1>Game <%=@game.id %></h1>
+
+<img src= "/assets/images/<%= @question_group.image %>">
+
+<%= form_for [@game, @question_group] do |f| %>
+  <% @question_group.questions.each do |question| %>
+    <p><%= question.text %></p>
+    <p><%= check_box_tag :questions,
+                          question.id, 
+                          question.correct, 
+                          name: 'question_group[questions][]'
+                          %></p>
+  <% end %>
+  <%= f.submit "Submit" %>
+<% end %>
+
+
