@@ -2,26 +2,35 @@
 
 <%= link_to "Play New Game", new_game_path %>
 
-<h2>Game Stats</h2>
+<% if !@completed_games.empty? %>
+  <h2>Game Stats</h2>
 
-<table>
-<% @completed_games.each do |game| %>
-  <tr>
-    <th>Game <%= game.id %> - <%= game.office %></th>
-  </tr>
-  <tr>
-    <td><%= number_to_percentage(game.question_stats("name"), precision: 0 ) %> Names</td>
-  </tr>
-  <tr>
-    <td><%= number_to_percentage(game.question_stats("title"), precision: 0 ) %> Titles</td>
-  </tr>
-  <tr>
-    <td><%= number_to_percentage(game.question_stats("team"), precision: 0 ) %> Teams</td>
-  </tr>
-  <tr>
-    <td><%= number_to_percentage(game.game_total_stats, precision: 0 ) %> Total</td>
-  </tr>
+  <% @completed_games.each do |game| %>
+    <div class="col-md-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">Game <%= game.id %> - <%= game.office %></div>
+
+      <!-- Table -->
+        <table class="table">
+          <tr>
+            <td><%= number_to_percentage(game.question_stats("name"), precision: 0 ) %> Names</td>
+          </tr>
+          <tr>
+            <td><%= number_to_percentage(game.question_stats("title"), precision: 0 ) %> Titles</td>
+          </tr>
+          <tr>
+            <td><%= number_to_percentage(game.question_stats("team"), precision: 0 ) %> Teams</td>
+          </tr>
+          <tr>
+            <td><%= number_to_percentage(game.game_total_stats, precision: 0 ) %> Total</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
 <% end %>
-</table>
+
+
+
 
 

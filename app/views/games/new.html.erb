@@ -1,6 +1,8 @@
 <h1>Choose Which Office to Be Quizzed On</h1>
 
-<%= form_for @game do |f| %>
-  <%= f.select :office, ["NYC", "LDN", "HK", "Dubai"] %>
-  <%= f.submit "Start Game" %>
-<% end %>
+<div class="new-game">
+  <%= form_for @game, html: {class: "form-inline"} do |f| %>
+    <%= f.select :office, ["NYC", "LDN", "HK", "Dubai"], {}, { class: 'form-control' } %>
+    <%= f.submit "Start Game", class: 'btn btn-warning' %>
+  <% end %>
+</div>

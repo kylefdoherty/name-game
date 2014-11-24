@@ -1,0 +1,53 @@
+.body-content-wrapper {
+  padding: 80px 15px;
+  text-align: center;
+}
+
+.new-game {
+  margin-top: 30px;
+}
+
+.image {
+  height: 400px;
+  width: 400px;
+}
+
+.questions {
+  height: 100px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.questions span {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.question-content {
+  margin: 10px;
+}
+
+.answers {
+  border-radius: 9px;
+  -moz-border-radius: 9px;
+  -webkit-border-radius: 9px;
+  border: 0px solid #800000;
+  background: #D4D4D4;
+  opacity:1;
+}
+
+.answers span {
+  opacity: 0;
+  font-size: 2em;
+}
+
+.answers:hover {
+  span {
+    opacity: 1;
+  }
+
+}
+
+
+

@@ -4,9 +4,9 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
-  def index 
+  def index
     @completed_games = Game.where(complete: true)
-  end 
+  end
 
   def create
     @game = Game.new(game_params)
