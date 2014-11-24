@@ -1,14 +1,19 @@
 <h1>Name Game</h1>
 
-<%= link_to "Play New Game", new_game_path %>
+<div class="new-game">
+  <%= form_for @game, html: {class: "form-inline"} do |f| %>
+    <%= f.select :office, ["NYC", "LDN", "HK", "Dubai"], {}, { class: 'form-control' } %>
+    <%= f.submit "Start Game", class: 'btn btn-warning' %>
+  <% end %>
+</div>
 
 <% if !@completed_games.empty? %>
   <h2>Game Stats</h2>
 
-  <% @completed_games.each do |game| %>
+  <% @completed_games.reverse.each do |game| %>
     <div class="col-md-4">
       <div class="panel panel-success">
-        <div class="panel-heading">Game <%= game.id %> - <%= game.office %></div>
+        <div class="panel-heading">Game <%= game.id %> - <%= game.office %> - <%= game.created_at.strftime("%m/%d/%Y") %></div>
 
       <!-- Table -->
         <table class="table">
