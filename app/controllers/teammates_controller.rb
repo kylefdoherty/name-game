@@ -26,7 +26,7 @@ class TeammatesController < ApplicationController
   # POST /teammates.json
   def create
     @teammate = Teammate.new(teammate_params)
-    upload 
+    upload
     @teammate.image = params[:teammate][:image].original_filename.to_s
 
     respond_to do |format|
@@ -43,7 +43,8 @@ class TeammatesController < ApplicationController
   # PATCH/PUT /teammates/1
   # PATCH/PUT /teammates/1.json
   def update
-    upload 
+    binding.pry
+    upload
     @teammate.image = params[:teammate][:image].original_filename.to_s
 
     respond_to do |format|
