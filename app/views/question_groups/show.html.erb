@@ -1,29 +1,41 @@
-<div class="question-group-content">
+<div class="question-group">
   <h1>Game <%=@game.id %></h1>
+  <img src= "/assets/images/<%= @question_group.image %>">
 
-  <div class="col-md-4 image">
-    <img src= "/assets/images/<%= @question_group.image %>">
-  </div>
-  <%= form_for [@game, @question_group] do |f| %>
-    <% @question_group.questions.each do |question| %>
+<%= form_for [@game, @question_group] do |f| %>
+  <% @question_group.questions.each do |question| %>
 
-    <div class="question-content">
-      <div class="col-md-4 questions answers">
-        <span><%= question.text %></span>
-      </div>
-
-      <div class="col-md-4 questions">
-        <span>
-          <%= check_box_tag :questions,
+    <div class="row">
+      <div class="col-md-3"></div>
+        <div class="qa col-md-3">
+          <div class="question-type">
+            <p><%= question.label %></p>
+            <div class="answer">
+              <p><%= question.text %></p>
+            </div>
+          </div>
+        </div>
+        <div class="qa status col-md-3">
+          <p>
+            <%= check_box_tag :questions,
                               question.id,
                               question.correct,
                               name: 'question_group[questions][]'
                               %>
-        </span>
-       </div>
-     </div>
+          </p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
     <% end %>
-    <%= f.submit "Next Question", class: 'btn btn-warning pull-right' %>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="qa col-md-3"></div>
+      <div class="qa col-md-3">
+        <%= f.submit "Next Question", class: 'btn btn-block btn-lg btn-warning pull-right' %>
+      </div>
+      <div class="col-md-3"></div>
+    </div>
   <% end %>
 </div>
+
 

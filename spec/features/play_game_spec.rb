@@ -11,7 +11,6 @@ feature "Play a new game" do
 
   scenario "Visit homepage and click 'Play New Game'" do
     visit '/'
-    click_link "Play New Game"
 
     select "NYC", from: "game_office"
     click_on "Start Game"
